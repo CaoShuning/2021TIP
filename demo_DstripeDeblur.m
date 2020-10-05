@@ -1,4 +1,5 @@
-%this is a code for jointly non-blind deblurring ande destriping
+%this is a code for jointly non-blind deblurring ande destriping for
+%simulated data
 clc; clear all; close all; 
 addpath(genpath('Images\'));
 addpath(genpath('psfestimation\'));
