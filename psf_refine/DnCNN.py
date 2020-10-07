@@ -26,7 +26,7 @@ import tables
 
 # Params
 parser = argparse.ArgumentParser(description='PyTorch DnCNN')
-parser.add_argument('--model', default='D:\caoshuning\code_DestripeDeblur\model\DnCNN200929', type=str, help='choose a type of model')
+parser.add_argument('--model', default='D:\caoshuning\code_DestripeDeblur\model\DnCNN201007_2', type=str, help='choose a type of model')
 parser.add_argument('--batch_size', default=4096, type=int, help='batch size')
 parser.add_argument('--epoch', default=2000, type=int, help='number of train epoches')
 parser.add_argument('--lr', default=1e-3, type=float, help='initial learning rate for Adam')
@@ -139,8 +139,8 @@ if __name__ == '__main__':
         model = model.cuda()
         criterion = criterion.cuda()
     optimizer = optim.Adam(model.parameters(), lr=args.lr,weight_decay=1e-4)
-    # scheduler = MultiStepLR(optimizer,milestones=[100,300,500],gamma=0.2)  # learning rates
-    scheduler = Polyscheduler(optimizer, gamma=0.8, EPOCH=n_epoch)
+    scheduler = MultiStepLR(optimizer,milestones=[7,30,90],gamma=0.2)  # learning rates
+    # scheduler = Polyscheduler(optimizer, gamma=0.1, EPOCH=n_epoch)
     # scheduler = LrScheduler.ReduceLROnPlateau(optimizer, 'min')  # learning rates
 
     writer = SummaryWriter(comment='train')
