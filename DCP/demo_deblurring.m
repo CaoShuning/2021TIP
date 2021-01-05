@@ -1,9 +1,11 @@
+%delurring for destriped data
 clc;
 clear;
 close all;
 addpath(genpath('image'));
 addpath(genpath('whyte_code'));
 addpath(genpath('cho_code'));
+addpath(genpath('..\..\code_DestripeDeblur\'));
 opts.prescale = 1; %%downsampling
 opts.xk_iter = 5; %% the iterations
 opts.gamma_correct = 1.0;
