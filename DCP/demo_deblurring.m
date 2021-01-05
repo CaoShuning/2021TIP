@@ -1,4 +1,4 @@
-%delurring for destriped data
+%delurring for destriped data.
 clc;
 clear;
 close all;
