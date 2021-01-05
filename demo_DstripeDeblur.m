@@ -15,21 +15,22 @@ addpath(genpath('framelet\'));
 %load degradation images kernel
 % [file, path] = uigetfile('*.png');              %get degraded image
 % Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\degradation2098\Nonperiodical\G\';
+date = '1226';
 Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\real\';
 [file_G, path_G] = uigetfile([Path_G, '*.tif']);              %get degraded image
 
-Path_Hr = 'C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\h_refine_1001\';%h_refine
+Path_Hr = ['C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\h_refine_',date ,'\'];%h_refine
 [file_Hr, path_Hr] = uigetfile([Path_Hr, '*.mat']);
 % Path_H = 'C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\h\';%h
 % suffix = '.mat';
 % H = dir(fullfile(Path_H,strcat('*',suffix)));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %save path
-Path_est_S = 'C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\est_S_1001\';%est_S
+Path_est_S = ['C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\est_S_',date ,'\'];%est_S
 if ~exist(Path_est_S,'dir')
     mkdir(Path_est_S);
 end
-Path_U = 'C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\U_1001\';%U
+Path_U = ['C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\U_',date ,'\'];%U
 if ~exist(Path_U,'dir')
     mkdir(Path_U);
 end

@@ -14,6 +14,7 @@ import cv2
 #
 def parse_args():
     parser = argparse.ArgumentParser()
+<<<<<<< HEAD
     # parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h\\', type=str, help='directory of test dataset')
     parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_1001\\', type=str, help='directory of test dataset')
     # parser.add_argument('--label_dir', default='C:\\Users\\caoshuning\\Desktop\\caoshuning\\caoshuning\\Kernel_modify\\testdata723\\label', type=str, help='directory of label')
@@ -24,6 +25,18 @@ def parse_args():
     parser.add_argument('--model_name', default='model_200.pth', type=str, help='the model name')
     # parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine\\', type=str, help='directory of test dataset')
     parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine_1007\\', type=str, help='directory of test dataset')
+=======
+    # parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_1226\\', type=str, help='directory of test dataset')
+    parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\real\\Proposed\\h_1226\\', type=str, help='directory of test dataset')
+    # parser.add_argument('--label_dir', default='C:\\Users\\caoshuning\\Desktop\\caoshuning\\caoshuning\\Kernel_modify\\testdata723\\label', type=str, help='directory of label')
+    # parser.add_argument('--set_names', default=['Set68', 'Set12'], help='directory of test dataset')
+    # parser.add_argument('--sigma', default=25, type=int, help='noise level')
+    parser.add_argument('--model_dir', default='D:\\caoshuning\\caoshuning\\Kernel_modify\\model\\DnCNN729\\', help='directory of the model')
+    # parser.add_argument('--model_dir', default='D:\\caoshuning\\code_DestripeDeblur\\psf_refine\\model\\DnCNN200929\\', help='directory of the model')
+    parser.add_argument('--model_name', default='model_1000.pth', type=str, help='the model name')
+    # parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine_1226\\', type=str, help='directory of test dataset')
+    parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\real\\Proposed\\h_refine_1226\\', type=str, help='directory of test dataset')
+>>>>>>> dev
     parser.add_argument('--save_result', default=1, type=int, help='save the modified kernel, 1 or 0')
     return parser.parse_args()
 
