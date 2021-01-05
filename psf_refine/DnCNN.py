@@ -14,19 +14,30 @@ from torch.utils.data import DataLoader
 from torch.utils.data import TensorDataset
 import torch.optim as optim
 import torch.optim.lr_scheduler
+<<<<<<< HEAD
 # from torch.optim.lr_scheduler import Polyscheduler
+=======
+>>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
 from torch.optim.lr_scheduler import MultiStepLR
 from torch.optim.lr_scheduler import _LRScheduler
 import torch.optim.lr_scheduler as LrScheduler
 import data_generator as dg
 from data_generator import DATASET
+<<<<<<< HEAD
 from tensorboardX import SummaryWriter
+=======
+# from tensorboardX import SummaryWriter
+>>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
 import tables
 
 
 # Params
 parser = argparse.ArgumentParser(description='PyTorch DnCNN')
+<<<<<<< HEAD
 parser.add_argument('--model', default='D:\caoshuning\code_DestripeDeblur\model\DnCNN201007_2', type=str, help='choose a type of model')
+=======
+parser.add_argument('--model', default='model/DnCNN200929', type=str, help='choose a type of model')
+>>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
 parser.add_argument('--batch_size', default=4096, type=int, help='batch size')
 parser.add_argument('--epoch', default=2000, type=int, help='number of train epoches')
 parser.add_argument('--lr', default=1e-3, type=float, help='initial learning rate for Adam')
@@ -54,7 +65,11 @@ class DnCNN(nn.Module):
         layers.append(nn.Conv2d(in_channels=image_channels, out_channels = n_channels, kernel_size=kernel_size, padding=padding, bias=True))
         layers.append(nn.ReLU(inplace=True))
         for _ in range(depth-2):
+<<<<<<< HEAD
             layers.append(nn.Conv2d(in_channels=n_channels, out_channels=n_channels, kernel_size=kernel_size, padding=padding,  bias=False))
+=======
+            layers.append( nn.Conv2d(in_channels=n_channels, out_channels=n_channels, kernel_size=kernel_size, padding=padding,  bias=False))
+>>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
             layers.append(nn.BatchNorm2d(n_channels, eps=0.0001, momentum=0.95))
             layers.append(nn.ReLU(inplace=True))
         layers.append(nn.Conv2d(in_channels=n_channels, out_channels=image_channels, kernel_size=kernel_size, padding=padding, bias=False))
@@ -139,11 +154,18 @@ if __name__ == '__main__':
         model = model.cuda()
         criterion = criterion.cuda()
     optimizer = optim.Adam(model.parameters(), lr=args.lr,weight_decay=1e-4)
+<<<<<<< HEAD
     scheduler = MultiStepLR(optimizer,milestones=[7,30,90],gamma=0.2)  # learning rates
     # scheduler = Polyscheduler(optimizer, gamma=0.1, EPOCH=n_epoch)
     # scheduler = LrScheduler.ReduceLROnPlateau(optimizer, 'min')  # learning rates
 
     writer = SummaryWriter(comment='train')
+=======
+    scheduler = MultiStepLR(optimizer,milestones=[500,1000,1500],gamma=0.5)  # learning rates
+    # scheduler = LrScheduler.ReduceLROnPlateau(optimizer, 'min')  # learning rates
+
+    # writer = SummaryWriter(comment='train')
+>>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
     #
     # DATA,LABEL = dg.datagenerator(data_dir=filename)
     # #     # data = torch.rand(20, 1, 11, 11)
@@ -185,9 +207,17 @@ if __name__ == '__main__':
         np.savetxt('train_result.txt', np.hstack((epoch + 1, epoch_loss / n_count, elapsed_time)), fmt='%2.4f')
         # torch.save(model.state_dict(), os.path.join(save_dir, 'model_%03d.pth' % (epoch+1)))
         torch.save(model, os.path.join(save_dir, 'model_%03d.pth' % (epoch + 1)))
+<<<<<<< HEAD
         writer.add_scalar('loss_curve', epoch_loss, epoch)
         writer.add_scalar('lr_curve', LR, epoch)
     # dummy_input = dummy_input = torch.rand(20, 1, 11, 11)
     # # writer.add_graph(model, dummy_input)
     writer.close()
+=======
+        # writer.add_scalar('loss_curve',epoch_loss,epoch)
+    #     writer.add_scalar('lr_curve',LR,epoch)
+    # dummy_input = dummy_input = torch.rand(20, 1, 11, 11)
+    # # writer.add_graph(model, dummy_input)
+    # writer.close()
+>>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
     #tensorboard --logdir runs --host=127.0.0.1
