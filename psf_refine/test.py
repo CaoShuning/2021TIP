@@ -14,40 +14,16 @@ import cv2
 #
 def parse_args():
     parser = argparse.ArgumentParser()
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
     # parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h\\', type=str, help='directory of test dataset')
-    parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_1001\\', type=str, help='directory of test dataset')
-    # parser.add_argument('--label_dir', default='C:\\Users\\caoshuning\\Desktop\\caoshuning\\caoshuning\\Kernel_modify\\testdata723\\label', type=str, help='directory of label')
-    # parser.add_argument('--set_names', default=['Set68', 'Set12'], help='directory of test dataset')
-    # parser.add_argument('--sigma', default=25, type=int, help='noise level')
-<<<<<<< HEAD
-    # parser.add_argument('--model_dir', default='D:\\caoshuning\\caoshuning\\Kernel_modify\\model\\DnCNN729\\', help='directory of the model')
-    parser.add_argument('--model_dir', default='D:\\caoshuning\\code_DestripeDeblur\\model\\DnCNN201007_2\\', help='directory of the model')
-    parser.add_argument('--model_name', default='model_200.pth', type=str, help='the model name')
-    # parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine\\', type=str, help='directory of test dataset')
-    parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine_1007\\', type=str, help='directory of test dataset')
-=======
-    # parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_1226\\', type=str, help='directory of test dataset')
-    parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\real\\Proposed\\h_1226\\', type=str, help='directory of test dataset')
+    parser.add_argument('--set_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\real\\Proposed\\13-Jan-2021\\h\\', type=str, help='directory of test dataset')
     # parser.add_argument('--label_dir', default='C:\\Users\\caoshuning\\Desktop\\caoshuning\\caoshuning\\Kernel_modify\\testdata723\\label', type=str, help='directory of label')
     # parser.add_argument('--set_names', default=['Set68', 'Set12'], help='directory of test dataset')
     # parser.add_argument('--sigma', default=25, type=int, help='noise level')
     parser.add_argument('--model_dir', default='D:\\caoshuning\\caoshuning\\Kernel_modify\\model\\DnCNN729\\', help='directory of the model')
     # parser.add_argument('--model_dir', default='D:\\caoshuning\\code_DestripeDeblur\\psf_refine\\model\\DnCNN200929\\', help='directory of the model')
     parser.add_argument('--model_name', default='model_1000.pth', type=str, help='the model name')
-    # parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine_1226\\', type=str, help='directory of test dataset')
-    parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\real\\Proposed\\h_refine_1226\\', type=str, help='directory of test dataset')
->>>>>>> dev
-=======
-    parser.add_argument('--model_dir', default='D:\\caoshuning\\caoshuning\\Kernel_modify\\model\\DnCNN729\\', help='directory of the model')
-    # parser.add_argument('--model_dir', default='D:\\caoshuning\\code_DestripeDeblur\\psf_refine\\model\\DnCNN200929\\', help='directory of the model')
-    parser.add_argument('--model_name', default='model_1000.pth', type=str, help='the model name')
     # parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine\\', type=str, help='directory of test dataset')
-    parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\simulation\\Proposed\\h_refine_1001\\', type=str, help='directory of test dataset')
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
+    parser.add_argument('--result_dir', default='C:\\Users\\caoshuning\\Desktop\\Submit_text\\result\\real\\Proposed\\13-Jan-2021\\h_refine\\', type=str, help='directory of test dataset')
     parser.add_argument('--save_result', default=1, type=int, help='save the modified kernel, 1 or 0')
     return parser.parse_args()
 
@@ -160,12 +136,6 @@ if __name__ == '__main__':
         if im.endswith(".mat") or im.endswith(".bmp") or im.endswith(".png"):
             # img = mat4py.loadmat(os.path.join(args.set_dir, im))
             img = scipy.io.loadmat(os.path.join(args.set_dir, im))
-<<<<<<< HEAD
-            x = np.array(np.transpose(img['K']), dtype=np.float32)  ########x is true kernel, transpose is necessary
-=======
-            x = np.array(np.transpose(img['K']), dtype=np.float32)########x is true kernel, transpose is necessary
-
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
             # np.random.seed(seed=0)  # for reproducibility
             # x = np.array(imread(os.path.join(args.label_dir, im)), dtype=np.float32) / 255.0
             # y = np.array(imread(os.path.join(args.set_dir, im)), dtype=np.float32) / 255.0  #y is bad kernel
@@ -188,40 +158,10 @@ if __name__ == '__main__':
             elapsed_time = time.time() - start_time
             print('%10s : %10s : %2.4f second' % (args.set_dir, im, elapsed_time))
 
-            psnr_x_ = compare_psnr(x, x_)
-            ssim_x_ = compare_ssim(x, x_)
-            psnr_bad = compare_psnr(x, y)
-
-            img['PSNR'] = psnr_x_
-            img['x6'] = psnr_bad
-<<<<<<< HEAD
-
-=======
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
             if args.save_result:
                 name, ext = os.path.splitext(im)
                 # show(np.hstack((y, x_)))  # show the image
                 # mat4py.savemat(filename=os.path.join(args.result_dir, name + '_dncnn' + '.mat'), data=img)
                 scipy.io.savemat(os.path.join(args.result_dir, name + '_dncnn' + '.mat'), img)
                 # save_result(x_, path=os.path.join(args.result_dir, name + '_dncnn' + '.png'))  # save the denoised image
-<<<<<<< HEAD
 
-=======
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
-            psnrs.append(psnr_x_)
-            psnrs_bad.append(psnr_bad)
-            ssims.append(ssim_x_)
-    psnr_avg = np.mean(psnrs)
-    psnrs_bad_avg = np.mean(psnrs_bad)
-    ssim_avg = np.mean(ssims)
-    psnrs.append(psnr_avg)
-    ssims.append(ssim_avg)
-    if args.save_result:
-<<<<<<< HEAD
-        save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir, 'results.txt'))
-    print(psnrs_bad_avg, psnr_avg, ssim_avg)
-
-=======
-        save_result(np.hstack((psnrs, ssims)), path=os.path.join(args.result_dir,  'results.txt'))
-    print(psnrs_bad_avg, psnr_avg,  ssim_avg)
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257

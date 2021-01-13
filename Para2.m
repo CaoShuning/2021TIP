@@ -31,11 +31,7 @@ if Sig == 1.1
         opt.taux = 0.000025;     %水平方向差分的正则化参数
         opt.tx = 1;        %taux=taux*1.01;
         opt.tauy = 0.00025;     %竖直方向差分的正则化参数,太小水平方向将惩罚过多,细节丢失严重
-<<<<<<< HEAD
         opt.ty = 1;        %tauy = tauy*0.995;
-=======
-        opt.ty = 0.1;        %tauy = tauy*0.995;
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
         opt.alphaz = 0.01;   %帧波惩罚参数
         opt.tauz = 0.05;     %帧波正则化
         opt.mu = 0.02;      %低秩分量的正则化参数

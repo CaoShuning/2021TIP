@@ -1,11 +1,7 @@
 function [B]   =  SVD_shrink(I, X, svdMethod, opts )
 
 % rank_B = opts.rank_B;
-<<<<<<< HEAD
 sv = opts.rank_B;
-=======
-sv = 1;
->>>>>>> 79b7b7b88e8b3cfe379b2c435dbbd56f66658257
 % sv = 30;
 [m,n] = size(I);
 
