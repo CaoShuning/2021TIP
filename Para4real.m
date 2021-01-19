@@ -2,19 +2,19 @@ function [opt] = Para4real(file_G)
  switch file_G 
      
      case 'AVIRIS_stripe_blur.tif'
-        opt.alphax = 0.0008;   %水平方向差分的惩罚参数
-        opt.ax = 1;        %alphax = alphax * 0.999;
-        opt.alphay = 0.0002;   %竖直方向差分的惩罚参数
-        opt.ay = 1;        %alphay = alphay * 0.995;
-        opt.taux = 0.0001;     %水平方向差分的正则化参数
+        opt.alphax = 1;   %水平方向差分的惩罚参数
+        opt.ax = 0.85;        %alphax = alphax * 0.999;
+        opt.alphay = 0.25;   %竖直方向差分的惩罚参数
+        opt.ay = 0.85;        %alphay = alphay * 0.995;
+        opt.taux = 0.0004;     %水平方向差分的正则化参数
         opt.tx = 1;        %taux=taux*1.01;
-        opt.tauy = 0.0001;     %竖直方向差分的正则化参数,太小水平方向将惩罚过多,细节丢失严重
+        opt.tauy = 0.0004;     %竖直方向差分的正则化参数,太小水平方向将惩罚过多,细节丢失严重
         opt.ty = 1;        %tauy = tauy*0.995;
         opt.alphaz = 0.006;   %帧波惩罚参数
         opt.tauz = 0.01;     %帧波正则化
         opt.mu = 0.008;      %低秩分量的正则化参数
 %         opt.mu = 0.008;
-        opt.rank_B = 1;
+        opt.rank_B = 30;
         opt.MU = 1;        %opts.mu = opts.mu * 0.995;
         opt.miu = 0.06;           %帧波参数
         opt.kernel_size =15;   %预估 PSF大小
@@ -22,9 +22,8 @@ function [opt] = Para4real(file_G)
         opt.tol = 1e-5;  %迭代停止误差, 1e-6
         opt.MaxIter = 50; %最大迭代次数 for stripelevel 10, when iter reach to 300, PSNR curve go down
         opt.Level = 4;
-        opt.frame = 1;
-        opt.wLevel = 0.5;
-
+        opt.frame = 3;
+        opt.wLevel = 1;
         case 'band95(1).tif'
         opt.alphax = 1;   %水平方向差分的惩罚参数
         opt.ax = 0.8;        %alphax = alphax * 0.999;
@@ -118,7 +117,7 @@ function [opt] = Para4real(file_G)
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
-   case 'Dioni_band1(1-250,50-299).tif'
+   case '(1302,1386)_2_10.tif'
         opt.alphax = 0.0001;   %水平方向差分的惩罚参数
         opt.ax = 0.0008;        %alphax = alphax * 0.999;
         opt.alphay = 0.0025;   %竖直方向差分的惩罚参数
@@ -140,6 +139,6 @@ function [opt] = Para4real(file_G)
         opt.tol = 1e-5;  %迭代停止误差, 1e-6
         opt.MaxIter = 20; %最大迭代次数 for stripelevel 10, when iter reach to 300, PSNR curve go down
         opt.Level = 4;
-        opt.frame = 1;
+        opt.frame = 3;
         opt.wLevel = 0.5;
 end

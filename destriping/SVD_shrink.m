@@ -4,6 +4,7 @@ function [B]   =  SVD_shrink(I, X, svdMethod, opts )
 sv = opts.rank_B;
 % sv = 30;
 [m,n] = size(I);
+mu = opts.mu;
 
 for iter = 1:opts.Innerloop_B
     %% B-subproblem
@@ -33,7 +34,7 @@ for iter = 1:opts.Innerloop_B
     
     %% Calculate the low rank image
     
-    mu = opts.mu;
+    
     C = sqrt(m);
     myeps = eps;
     if choosvd(n, sv) == 1
@@ -73,5 +74,6 @@ for iter = 1:opts.Innerloop_B
 %     end
 %     B = U(:, 1:svp) * diag(diagS(1:svp,:) - (opts.tau/opts.delta)) * V(:, 1:svp)';
 %     
+%     mu = mu*1.1;
     
 end
