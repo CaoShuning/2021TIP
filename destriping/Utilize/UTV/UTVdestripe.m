@@ -1,6 +1,6 @@
 %%% 注: 算法均对水平条带进行处理
 %%% 求解 u 时利用 FFT
-function u = UTVdestripe(f,I,alpha,belta,lamda,omega1,omega2,MaxIter)
+function u = UTVdestripe(f,alpha,belta,lamda,omega1,omega2,MaxIter)
 
 [N1,N2] = size(f);
 %%% 初始化 %%%
@@ -23,7 +23,7 @@ ep = 1e-6;
 %%% compute fixed quantities
 [conjoDx,conjoDy,num1,Denom1,Denom2] = getC(g);
 %%% 主循环 
-while StopFlag == 0
+while StopFlag == 0,
 
     k = k + 1;
      %%% (3) 使用FFT更新解 u

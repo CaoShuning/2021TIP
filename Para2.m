@@ -44,6 +44,7 @@ if Sig == 1.1
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     elseif I ==30
         opt.alphax = 0.0005;   %水平方向差分的惩罚参数
         opt.ax = 0.995;        %alphax = alphax * 0.999;
@@ -61,10 +62,11 @@ if Sig == 1.1
         opt.kernel_size =15;   %预估 PSF大小
         opt.Innerloop_B =5;
         opt.tol = 5e-5;  %迭代停止误差, 1e-6
-        opt.MaxIter = 1500; %最大迭代次数 for stripelevel 10, when iter reach to 300, PSNR curve go down
+        opt.MaxIter = 300; %最大迭代次数 for stripelevel 10, when iter reach to 300, PSNR curve go down
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     end
 elseif Sig == 1.6
     if I == 10
@@ -84,10 +86,11 @@ elseif Sig == 1.6
         opt.kernel_size =15;   %预估 PSF大小
         opt.Innerloop_B =5;
         opt.tol = 5e-5;  %迭代停止误差, 1e-6
-        opt.MaxIter = 1500; %最大迭代次数 for stripelevel 10, when iter reach to 300, PSNR curve go down
+        opt.MaxIter = 200; %最大迭代次数 for stripelevel 10, when iter reach to 300, PSNR curve go down
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     elseif I == 20
         opt.alphax = 0.0001;   %水平方向差分的惩罚参数
         opt.ax = 0.999;        %alphax = alphax * 0.999;
@@ -109,6 +112,7 @@ elseif Sig == 1.6
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     elseif I == 30
         opt.alphax = 0.0002;   %水平方向差分的惩罚参数
         opt.ax = 0.995;        %alphax = alphax * 0.999;
@@ -130,6 +134,7 @@ elseif Sig == 1.6
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     end
 elseif Sig == 2.1
     if I == 10
@@ -153,6 +158,7 @@ elseif Sig == 2.1
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     elseif I == 20
         opt.alphax = 0.00005;   %水平方向差分的惩罚参数
         opt.ax = 0.999;        %alphax = alphax * 0.999;
@@ -174,6 +180,7 @@ elseif Sig == 2.1
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     elseif I == 30
         opt.alphax = 0.00008;   %水平方向差分的惩罚参数
         opt.ax = 0.995;        %alphax = alphax * 0.999;
@@ -195,5 +202,6 @@ elseif Sig == 2.1
         opt.Level = 4;
         opt.frame = 1;
         opt.wLevel = 0.5;
+        opt.rank_B = 1;
     end
 end

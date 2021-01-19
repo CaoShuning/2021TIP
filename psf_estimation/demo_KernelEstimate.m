@@ -3,19 +3,19 @@ clc, clear all; close all;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %load degradation images kernel
-Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\real\';
+Path_G = 'D:\caoshuning\code_DestripeDeblur\Data\simulation\19-Jan-2021\G\';
 [file, path] = uigetfile([Path_G, '*.tif']);              %get degraded image
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %save path
-SavePath = ['C:\Users\caoshuning\Desktop\Submit_text\result\real\Proposed\',date,'\','h\'];
+SavePath = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\Proposed\',date,'\','h\'];
 if exist(SavePath,'dir') == 0
     mkdir(SavePath);
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %para setting for real data
-lambda = 5; gamma = 0.5; 
+lambda = 5; gamma = 5; 
 MK =15;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
