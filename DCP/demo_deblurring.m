@@ -15,11 +15,12 @@ lambda_tv = 0.001; lambda_l0 = 1e-3; weight_ring = 1;
 %% Note:
 %% lambda_tv, lambda_l0, weight_ring are non-necessary, they are not used in kernel estimation.
 %%
-Path_ori = 'D:\caoshuning\caoshuning\spot5\gt\';
+Path_ori = 'D:\caoshuning\code_DestripeDeblur\Data\ori\';
 Path_g = 'D:\caoshuning\code_DestripeDeblur\Data\simulation\19-Jan-2021\G\';
 
 Method = 'SGE'; date = '19-Jan-2021';
 FILE = dir(fullfile(['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\',Method,'\',date,'\F\*.tif']));
+
 % checkpoint = dir(fullfile('C:\Users\caoshuning\Desktop\JieTi\result\tank\k\*.png'));
 
 %save path
@@ -34,7 +35,7 @@ if ~exist(Path_h,'dir')
 end
 
 % cp = floor((length(checkpoint))/8)*8+2;
-for i = 1:length(FILE)
+for i = 133:length(FILE)
     imgname = FILE(i).name;
     filename = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\',Method,'\',date,'\F\', imgname];
     oriname = [Path_ori, imgname(1:1),'.tif'];

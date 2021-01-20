@@ -18,7 +18,7 @@ imshow(Y_b);
 title('Blurry Image');
 
 %% Blind image deblurring
-k_estimate_size=69; % set approximate kernel size
+k_estimate_size=15; % set approximate kernel size
 show_intermediate=true; % show intermediate output or not
 
 border=20;% cut boundaries of the input blurry image (default border length: 20) 

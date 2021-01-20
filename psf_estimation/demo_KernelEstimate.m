@@ -2,6 +2,7 @@
 clc, clear all; close all;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+date = '19-Jan-2021';
 %load degradation images kernel
 Path_G = 'D:\caoshuning\code_DestripeDeblur\Data\simulation\19-Jan-2021\G\';
 [file, path] = uigetfile([Path_G, '*.tif']);              %get degraded image
