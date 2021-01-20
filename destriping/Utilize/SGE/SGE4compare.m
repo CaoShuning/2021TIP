@@ -5,26 +5,28 @@ clc;
 addpath(genpath('images\'));
 addpath(genpath('Codes\'));
 %% ∂¡»°ªÚº”‘ÿÕºœÒ
-Path_ori = 'D:\caoshuning\caoshuning\spot5\gt\';
+Path_Ori = 'D:\caoshuning\code_DestripeDeblur\Data\ori\';
 
 % Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\degradation2098\Nonperiodical\G\';
-Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\spot5(1)-degradation\';
+Path_G = 'D:\caoshuning\code_DestripeDeblur\Data\simulation\19-Jan-2021\G\';
 suffix = '.tif';
 Gs = dir(fullfile(Path_G,strcat('*',suffix)));
 
+date = '19-Jan-2021';
 %save path
-Path_est_S = 'C:\Users\caoshuning\Desktop\Submit_text\result\simulation\SGE\915\est_S\';%est_S
+Path_est_S = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\SGE\',date ,'\est_S\'];%est_S
 if ~exist(Path_est_S,'dir')
     mkdir(Path_est_S)
 end
-Path_F = 'C:\Users\caoshuning\Desktop\Submit_text\result\simulation\SGE\915\F\';%U
+Path_F = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\SGE\',date ,'\F\'];%U
 if ~exist(Path_F,'dir')
     mkdir(Path_F)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [filename, filepath, FilterIndex ] = uigetfile('D:\caoshuning\caoshuning\TEST_github\dataset\degrade66/*.*','Read image');
 for i = 1:length(Gs)   
-    ori = im2double(imread([Path_ori, Gs(i).name(1),'.tif']));
+    
+    ori = im2double(imread([Path_Ori, Gs(i).name(1),'.tif']));
     y = im2double(imread([Path_G, Gs(i).name]));
     % y =  double(rgb2gray(imread(fullfile(filepath,filename))));
 %     y = y/256;
@@ -65,9 +67,9 @@ for i = 1:length(Gs)
     for c=1:C
         y_c(:,c) = y_c(:,c)-g(c);
     end
-    figure,imshow(y,[]);
-    figure,imshow(y_c,[])
-    figure,plot(g,'r');
+%     figure,imshow(y,[]);
+%     figure,imshow(y_c,[])
+%     figure,plot(g,'r');
 %     imwrite(y_c,['D:\caoshuning\caoshuning\TEST_github\result65\SGE\','f_',filename]);
     G = y;
     f = y_c;

@@ -7,27 +7,28 @@ clear all;
 close all;
 clc;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Path_ori = 'D:\caoshuning\caoshuning\spot5\gt\';
+Path_Ori = 'D:\caoshuning\code_DestripeDeblur\Data\ori\';
 
 % Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\degradation2098\Nonperiodical\G\';
-Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\spot5(1)-degradation\';
+Path_G = 'D:\caoshuning\code_DestripeDeblur\Data\simulation\19-Jan-2021\G\';
 suffix = '.tif';
 Gs = dir(fullfile(Path_G,strcat('*',suffix)));
 
+date = '19-Jan-2021';
 %save path
-Path_est_S = 'C:\Users\caoshuning\Desktop\Submit_text\result\simulation\WFAF\915\est_S\';%est_S
+Path_est_S = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\WFAF\',date ,'\est_S\'];%est_S
 if ~exist(Path_est_S,'dir')
     mkdir(Path_est_S)
 end
-Path_F = 'C:\Users\caoshuning\Desktop\Submit_text\result\simulation\WFAF\915\F\';%U
+Path_F = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\WFAF\',date ,'\F\'];%U
 if ~exist(Path_F,'dir')
     mkdir(Path_F)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for file_i = 1:length(Gs)
+for file_i = 166:length(Gs)
 %     [ filename, pathname ] = uigetfile('D:\caoshuning\caoshuning\TEST_github\dataset\degrade66/*.*', 'load image');
 %     I = double(imread( fullfile( pathname, filename ) ));
-    ori = im2double(imread([Path_ori, Gs(file_i).name(1),'.tif']));
+    ori = im2double(imread([Path_Ori, Gs(file_i).name(1),'.tif']));
     Is = im2double(imread([Path_G, Gs(file_i).name]));
     %  rand('seed',0);
     % kk = randperm(307,107);
@@ -55,6 +56,8 @@ for file_i = 1:length(Gs)
        newimg=newimg(1:size(hd{i},1),1:size(hd{i},2));
        newimg=idwt2(newimg,hd{i},vd{i},dd{i},wavtyp);
     end
+    [H,W] = size(ori);
+    newimg = newimg(1:H,1:W);
 %     figure,imshow(newimg,[]);
 %     toc
     G = Is;

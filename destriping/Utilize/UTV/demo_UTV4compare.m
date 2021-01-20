@@ -3,19 +3,20 @@ clear all;
 close all;
 clc;
 
-Path_ori = 'D:\caoshuning\caoshuning\spot5\gt\';
+Path_Ori = 'D:\caoshuning\code_DestripeDeblur\Data\ori\';
 
 % Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\degradation2098\Nonperiodical\G\';
-Path_G = 'D:\caoshuning\caoshuning\TEST_github\dataset\spot5(1)-degradation\';
+Path_G = 'D:\caoshuning\code_DestripeDeblur\Data\simulation\19-Jan-2021\G\';
 suffix = '.tif';
 Gs = dir(fullfile(Path_G,strcat('*',suffix)));
 
+date = '19-Jan-2021';
 %save path
-Path_est_S = 'C:\Users\caoshuning\Desktop\Submit_text\result\simulation\UTV\1005\est_S\';%est_S
+Path_est_S = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\UTV\',date ,'\est_S\'];%est_S
 if ~exist(Path_est_S,'dir')
     mkdir(Path_est_S)
 end
-Path_F = 'C:\Users\caoshuning\Desktop\Submit_text\result\simulation\UTV\1005\F\';%U
+Path_F = ['C:\Users\caoshuning\Desktop\Submit_text\result\simulation\UTV\',date ,'\F\'];%U
 if ~exist(Path_F,'dir')
     mkdir(Path_F)
 end
@@ -24,27 +25,27 @@ for i = 1:length(Gs)
 %     ori = im2double(imread([Path_ori, Gs(i).name(1),'.tif']));
 %     [filename, filepath, FilterIndex ] = uigetfile('/*.*','Read image');
 %     I =  im2double(imread(fullfile(filepath,filename)));%degrade g
-    ori = im2double(imread([Path_ori, Gs(i).name(1),'.tif']));
+    ori = im2double(imread([Path_Ori, Gs(i).name(1),'.tif']));
     I = im2double(imread([Path_G, Gs(i).name]));
     f = transpose(I); % 将竖条带转换为横条带 
     figure; imshow(f',[]); title('Striped image');
 
     %%% 参数设置
-%     alpha = 1000;omega2 = 10;
-%     belta = 100;lamda = 1;
-%     omega1 = 0.0001;
-%     MaxIter = 30;
-    stripe_level = str2double(Gs(i).name(end-9:end-8));
-    SIG = str2double(Gs(i).name(end-15:end-13));
-    [opt] = Para4UTV(stripe_level,SIG);
-    alpha = opt.alpha; omega2 = opt.omega2;
-    belta = opt.belta; lamda = opt.lamda;
-    omega1 = opt.omega1;
-    MaxIter = opt.MaxIter;
+    alpha = 1000;omega2 = 10;
+    belta = 100;lamda = 1;
+    omega1 = 0.0001;
+    MaxIter = 30;
+%     stripe_level = str2double(Gs(i).name(end-9:end-8));
+%     SIG = str2double(Gs(i).name(end-15:end-13));
+%     [opt] = Para4UTV(stripe_level,SIG);
+%     alpha = opt.alpha; omega2 = opt.omega2;
+%     belta = opt.belta; lamda = opt.lamda;
+%     omega1 = opt.omega1;
+%     MaxIter = opt.MaxIter;
 %     tic
     %%% 主程序
     u = UTVdestripe(f,alpha,belta,lamda,omega1,omega2,MaxIter);
-    [u,h,out] = Deblur(u,ori,0.0001,0.05,0.00001,0.005,100);
+%     [u,h,out] = Deblur(u,ori,0.0001,0.05,0.00001,0.005,100);
     G = I;
     s = G - u';
     f = u';

@@ -11,7 +11,7 @@ ORI = dir(fullfile([ORIpath, '*.tif']));
 %save path
 TYPE = 'simulation';
 % TYPE = 'real';
-% date = '0105\';
+date = '19-Jan-2021\';
 
 Gpath = ['..\data\', TYPE, '\', date ,'\G\'];
 Fpath = ['..\data\', TYPE, '\', date ,'\F\'];
@@ -31,7 +31,7 @@ if ~exist(Spath,'dir')
     mkdir(Spath);
 end
 
-for i = 1:length(ORI)
+for i = 5:length(ORI)
     IMGname = ORI(i).name;
     I = imread([ORIpath, IMGname]);
     I = im2double(I);
